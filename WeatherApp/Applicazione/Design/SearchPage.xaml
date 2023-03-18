@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:viewModel="clr-namespace:WeatherApp.Applicazione.Code.ViewModel"
+             xmlns:model="clr-namespace:WeatherApp.Applicazione.Code.Model"
+             xmlns:base="clr-namespace:WeatherApp.Applicazione.Code.Base"
+             x:DataType="viewModel:SearchViewModel"
+             x:Class="WeatherApp.Applicazione.Design.SearchPage"
+             
+             BackgroundColor="#242952"
+             ios:Page.UseSafeArea="False">
+    
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Button HeightRequest="20" WidthRequest="20" Command="{Binding BackCommand}"/>
+            <Entry Text="{Binding SearchText}" 
+                   TextColor="White" 
+                   Placeholder="Search a City" 
+                   PlaceholderColor="#A1A1A1" 
+                   WidthRequest="288" 
+                   BackgroundColor="#313869" 
+                   HorizontalOptions="Center"
+                   HeightRequest="39" VerticalTextAlignment="Center" Margin="10, 0, 0, 0"/>
+        </HorizontalStackLayout>
+        <CollectionView 
+            ItemsSource="{Binding LocationsList}"
+            HeightRequest="500"
+            Margin="50, 30">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Locations">
+                    <Grid>
+                        <Image Source="search_back.png"/>
+                        <Grid>
+                            <Frame BackgroundColor="Transparent" BorderColor="Transparent">
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Name}"
+                                           FontFamily="RobotoMedium"
+                                           FontSize="25"
+                                           Margin="30, 0, 10, 0"
+                                           TextColor="White"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="{Binding CountryCode}"
+                                           FontFamily="RobotoMedium"
+                                           FontSize="30"
+                                           TextColor="White"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:SearchViewModel }}, Path=SelectCommand}"
+                                                          CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+    
+</base:BasePage>

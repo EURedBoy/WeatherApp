@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+               xmlns:viewModel="clr-namespace:WeatherApp.Applicazione.Code.ViewModel"
+               xmlns:model="clr-namespace:WeatherApp.Applicazione.Code.Model"
+               xmlns:base="clr-namespace:WeatherApp.Applicazione.Code.Base"
+               x:Class="WeatherApp.Applicazione.Design.HomePage"
+
+               ios:Page.UseSafeArea="False">
+
+    <ContentPage.BindingContext>
+        <viewModel:WeatherViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid IgnoreSafeArea="True">
+        <Image Source="{Binding Background}" Aspect="AspectFill" />
+        <Grid>
+            <RefreshView
+                RefreshColor="White"
+                IsRefreshing="{Binding IsRefreshing}"
+                Command="{Binding RefreshCommand}">
+                <ScrollView HorizontalScrollBarVisibility="Never">
+                    <VerticalStackLayout VerticalOptions="FillAndExpand">
+                        <Label Text="{Binding CurrentWeather.City}"
+                               Margin="0, 50, 0, 0"
+                               FontFamily="RobotoRegular"
+                               FontSize="22"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        <Label Text="{Binding CurrentWeather.Temperature, StringFormat='{0:F0}°'}"
+                               FontFamily="RobotoRegular"
+                               FontSize="80"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+
+                        <Frame
+                            Margin="0, 170, 0, 0"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+
+                            HeightRequest="94">
+                            <CollectionView ItemsSource="{Binding WeeklyWeather}"
+                                            HeightRequest="94"
+                                            HorizontalScrollBarVisibility="Never">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Horizontal" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="model:WeatherDay">
+                                        <Frame
+                                            WidthRequest="74"
+                                            HorizontalOptions="Start"
+
+                                            Padding="0, 0, 7, 10"
+
+                                            BackgroundColor="Transparent"
+                                            BorderColor="Transparent">
+                                            <VerticalStackLayout>
+                                                <Label Text="{Binding Date, StringFormat='{0:dd MMM}'}"
+                                                       TextColor="White" FontSize="15" FontFamily="RobotoMedium"
+                                                       HorizontalOptions="Center" />
+                                                <Image Source="{Binding Icon}" WidthRequest="68" HeightRequest="50"
+                                                       HorizontalOptions="Center" />
+                                                <Label Text="{Binding Temperature, StringFormat='{0:F0}°'}"
+                                                       TextColor="White" FontSize="20" FontFamily="RobotoMedium"
+                                                       HorizontalOptions="Center" />
+                                            </VerticalStackLayout>
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Frame>
+
+                        <Frame
+                            BackgroundColor="#cc676767"
+                            BorderColor="Transparent"
+
+                            Margin="0, 60, 0, 0"
+
+                            CornerRadius="30"
+
+                            VerticalOptions="End"
+                            HeightRequest="310">
+                            <VerticalStackLayout VerticalOptions="Fill">
+                                <Frame
+                                    WidthRequest="87"
+                                    HeightRequest="10"
+                                    BackgroundColor="#cc454545"
+                                    BorderColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    CornerRadius="7" />
+
+
+                                <HorizontalStackLayout HorizontalOptions="Center" Margin="0, 150, 0, 0">
+
+                                    <Frame
+                                        BackgroundColor="#3aAAAAAA"
+                                        BorderColor="Transparent"
+                                        HeightRequest="110"
+                                        WidthRequest="120"
+
+                                        Padding="10"
+
+                                        CornerRadius="20">
+
+                                        <VerticalStackLayout>
+                                            <HorizontalStackLayout>
+                                                <Image Source="wind_icon.png"
+                                                       HeightRequest="15"
+                                                       WidthRequest="15" />
+                                                <Label Text="Wind Speed" TextColor="White" FontSize="15.5"
+                                                       FontFamily="RobotoMedium" Margin="5, 0" />
+                                            </HorizontalStackLayout>
+                                            <Label Text="{Binding CurrentWeather.WindSpeed, StringFormat='{0:F0}km/h'}"
+                                                   TextColor="White" FontSize="30" FontFamily="RobotoMedium"
+                                                   Margin="0, 15"
+                                                   HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+
+                                    <Frame
+                                        BackgroundColor="#3aAAAAAA"
+                                        BorderColor="Transparent"
+                                        HeightRequest="85"
+                                        WidthRequest="85"
+
+                                        Margin="15, 27, 15, 0"
+
+                                        CornerRadius="40">
+                                        <Image Source="menu.png" />
+                                        
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding GotoSearchCommand}" />
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+
+                                    <Frame
+                                        BackgroundColor="#37AAAAAA"
+                                        BorderColor="Transparent"
+                                        HeightRequest="110"
+                                        WidthRequest="120"
+
+                                        Padding="10"
+
+                                        CornerRadius="20">
+                                        <VerticalStackLayout>
+                                            <HorizontalStackLayout>
+                                                <Image Source="water_drop_icon.png"
+                                                       HeightRequest="15"
+                                                       WidthRequest="15" />
+                                                <Label Text="Rainfall" TextColor="White" FontSize="15.5"
+                                                       FontFamily="RobotoMedium" Margin="5, 0" />
+                                            </HorizontalStackLayout>
+                                            <Label Text="{Binding CurrentWeather.RainFall, StringFormat='{0:F0}%'}"
+                                                   TextColor="White" FontSize="30" FontFamily="RobotoMedium"
+                                                   Margin="0, 15"
+                                                   HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </RefreshView>
+        </Grid>
+    </Grid>
+
+</base:BasePage>
