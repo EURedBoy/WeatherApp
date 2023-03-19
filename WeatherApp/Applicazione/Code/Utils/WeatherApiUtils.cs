@@ -7,10 +7,14 @@ public class WeatherApiUtils
 {
     public static string PreferencePath = FileSystem.AppDataDirectory + "/preference.json";
     
-    public static DateTime UnixToDate(long unix)
+    public static DateTime UnixToDate(long unix, string timezone)
     {
         DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-        return dateTime.AddSeconds(unix).ToLocalTime();
+        dateTime = dateTime.AddSeconds(unix);
+        
+        var tz = TimeZoneInfo.FindSystemTimeZoneById(timezone);
+
+        return TimeZoneInfo.ConvertTime(dateTime, tz);
     }
 
     public static (ImageSource img, string text) CodeToImage(int code)

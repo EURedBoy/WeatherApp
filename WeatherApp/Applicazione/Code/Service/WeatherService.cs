@@ -27,7 +27,7 @@ public class WeatherService
 
     public async Task<(List<WeatherDay> week, WeatherDay current)> GetWeatherAsync(string city, double lon, double lat)
     {
-        FormattableString formattable = $"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&&current_weather=true&hourly=temperature_2m,precipitation_probability,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max&timeformat=unixtime&timezone=Europe%2FBerlin";
+        FormattableString formattable = $"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&&current_weather=true&hourly=temperature_2m,precipitation_probability,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max&timeformat=unixtime&timezone=auto";
         var url = FormattableString.Invariant(formattable);
         
         var response = await httpClient.GetAsync(url);
@@ -54,13 +54,15 @@ public class WeatherService
                 week.Windspeed10mMax[i], 
                 week.PrecipitationProbabilityMax[i], 
                 week.Time[i], 
+                weatherApi.Timezone,
                 week.Weathercode[i],
                 new List<WeatherHour>())
             );
         }
 
         CurrentWeather current = weatherApi.CurrentWeather;
-        WeatherDay currentWeather = new WeatherDay(city, current.Temperature, current.Windspeed, 0, current.Time,
+        WeatherDay currentWeather = new WeatherDay(city, current.Temperature, current.Windspeed, 0, current.Time, 
+            weatherApi.Timezone,
             current.Weathercode, new List<WeatherHour>());
 
         return (weatherDays, currentWeather);

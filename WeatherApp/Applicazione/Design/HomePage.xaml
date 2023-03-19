@@ -16,10 +16,10 @@
 
     <Grid IgnoreSafeArea="True">
         <Image Source="{Binding Background}" Aspect="AspectFill" />
-        <Grid>
+        <Grid IsVisible="{Binding IsNotBusy}">
             <RefreshView
                 RefreshColor="White"
-                IsRefreshing="{Binding IsRefreshing}"
+                IsRefreshing="{Binding IsReloading}"
                 Command="{Binding RefreshCommand}">
                 <ScrollView HorizontalScrollBarVisibility="Never">
                     <VerticalStackLayout VerticalOptions="FillAndExpand">
@@ -166,6 +166,12 @@
                 </ScrollView>
             </RefreshView>
         </Grid>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"
+                           Color="AliceBlue"
+                           Grid.ColumnSpan="2"/>
     </Grid>
 
 </base:BasePage>

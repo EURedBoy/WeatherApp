@@ -13,14 +13,14 @@ public class WeatherDay
     public string Description { get; set; }
     public List<WeatherHour> WeatherHours { get; set; } = new List<WeatherHour>();
 
-    public WeatherDay(string city, double temperature, double windSpeed, double rainFall, long unix, int code, List<WeatherHour> weatherHours)
+    public WeatherDay(string city, double temperature, double windSpeed, double rainFall, long unix, string timezone, int code, List<WeatherHour> weatherHours)
     {
         City = city;
         Temperature = temperature;
         WindSpeed = windSpeed;
         RainFall = rainFall;
 
-        Date = WeatherApiUtils.UnixToDate(unix);
+        Date = WeatherApiUtils.UnixToDate(unix, timezone);
         
         var tempCode = WeatherApiUtils.CodeToImage(code);
         Description = tempCode.text;

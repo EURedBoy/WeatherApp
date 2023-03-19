@@ -6,7 +6,7 @@ using WeatherApp.Applicazione.Design;
 
 namespace WeatherApp.Applicazione.Code.ViewModel;
 
-public partial class WeatherViewModel : ObservableObject
+public partial class WeatherViewModel : BaseViewModel
 {
     private WeatherService service;
 
@@ -15,13 +15,13 @@ public partial class WeatherViewModel : ObservableObject
     private double longi = 9.279999;
 
     [ObservableProperty] 
-    public ImageSource background;
-
-    [ObservableProperty] 
-    public bool isRefreshing;
+    public ImageSource background = ImageSource.FromFile("day_background.jpg");
 
     [ObservableProperty] 
     public WeatherDay currentWeather;
+
+    [ObservableProperty] 
+    public bool isReloading;
 
     [ObservableProperty] 
     public List<WeatherDay> weeklyWeather;
@@ -30,11 +30,12 @@ public partial class WeatherViewModel : ObservableObject
     {
         service = App.WeatherService;
 
-        Task.Run(async () => await Update());
+        Task.Run(async () => await OnLoad());
     }
 
     public async Task Update()
     {
+
         Locations loc = service.SelectedLocation;
         (List<WeatherDay> week, WeatherDay current) apiResponse = await service.GetWeatherAsync(loc.Name, loc.Longitude, loc.Latitude);
         
@@ -42,7 +43,7 @@ public partial class WeatherViewModel : ObservableObject
         WeeklyWeather = apiResponse.week 
                         ?? new List<WeatherDay>();
         CurrentWeather = apiResponse.current 
-                         ?? new WeatherDay("NaN", 0, 0, 0, 0, 0, new List<WeatherHour>());
+                         ?? new WeatherDay("NaN", 0, 0, 0, 0, "CET", 0, new List<WeatherHour>());
         
         Background = CurrentWeather.Date.Hour switch
         {
@@ -50,14 +51,22 @@ public partial class WeatherViewModel : ObservableObject
             >= 17 and < 20 => ImageSource.FromFile("sunset_background.jpg"),
             _ => ImageSource.FromFile("night_background.jpg")
         };
+        
+    }
+
+    private async Task OnLoad()
+    {
+        IsBusy = true;
+        await Update();
+        IsBusy = false;
     }
     
     [RelayCommand]
     private async void OnRefresh()
     {
-        IsRefreshing = true;
+        IsReloading = true;
         await Update();
-        IsRefreshing = false;
+        IsReloading = false;
     }
 
     [RelayCommand]
