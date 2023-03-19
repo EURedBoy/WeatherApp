@@ -45,8 +45,6 @@ public partial class WeatherViewModel : BaseViewModel
         CurrentWeather = apiResponse.current 
                          ?? new WeatherDay("NaN", 0, 0, 0, 0, "CET", 0, new List<WeatherHour>());
 
-        CurrentWeather.RainFall = WeeklyWeather[0].RainFall; //Magari togliere
-        
         Background = CurrentWeather.Date.Hour switch
         {
             >= 6 and < 17 => ImageSource.FromFile("day_background.jpg"),

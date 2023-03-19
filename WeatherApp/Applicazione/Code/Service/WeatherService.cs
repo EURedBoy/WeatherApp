@@ -61,7 +61,7 @@ public class WeatherService
         }
 
         CurrentWeather current = weatherApi.CurrentWeather;
-        WeatherDay currentWeather = new WeatherDay(city, current.Temperature, current.Windspeed, 0, current.Time, 
+        WeatherDay currentWeather = new WeatherDay(city, current.Temperature, current.Windspeed, weatherDays[0].RainFall, current.Time, 
             weatherApi.Timezone,
             current.Weathercode, new List<WeatherHour>());
 
