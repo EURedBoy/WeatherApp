@@ -1,20 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-               xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                xmlns:viewModel="clr-namespace:WeatherApp.Applicazione.Code.ViewModel"
                xmlns:model="clr-namespace:WeatherApp.Applicazione.Code.Model"
                xmlns:base="clr-namespace:WeatherApp.Applicazione.Code.Base"
-               x:Class="WeatherApp.Applicazione.Design.HomePage"
-
-               ios:Page.UseSafeArea="False">
+               x:Class="WeatherApp.Applicazione.Design.Android.AndroidHomePage">
 
     <ContentPage.BindingContext>
         <viewModel:WeatherViewModel />
     </ContentPage.BindingContext>
 
-    <Grid IgnoreSafeArea="True">
+    <Grid>
         <Image Source="{Binding Background}" Aspect="AspectFill" />
         <Grid IsVisible="{Binding IsNotBusy}">
             <RefreshView
@@ -34,26 +31,25 @@
                                FontSize="80"
                                TextColor="White"
                                HorizontalOptions="Center" />
-
-                        <Frame
-                            Margin="0, 170, 0, 0"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-
-                            HeightRequest="94">
-                            <CollectionView ItemsSource="{Binding WeeklyWeather}"
-                                            HeightRequest="94"
-                                            HorizontalScrollBarVisibility="Never">
+                        
+                        <CollectionView ItemsSource="{Binding WeeklyWeather}"
+                                        
+                                        BackgroundColor="Transparent"
+                                        
+                                        Margin="0, 160, 0, 0"
+                                        HeightRequest="104"
+                                        
+                                        HorizontalScrollBarVisibility="Never">
                                 <CollectionView.ItemsLayout>
-                                    <GridItemsLayout Orientation="Horizontal" />
+                                    <GridItemsLayout Orientation="Horizontal"  />
                                 </CollectionView.ItemsLayout>
-                                <CollectionView.ItemTemplate>
+                            <CollectionView.ItemTemplate>
                                     <DataTemplate x:DataType="model:WeatherDay">
                                         <Frame
                                             WidthRequest="74"
                                             HorizontalOptions="Start"
 
-                                            Padding="0, 0, 7, 10"
+                                            Padding="0, 0, 7, 0"
 
                                             BackgroundColor="Transparent"
                                             BorderColor="Transparent">
@@ -70,14 +66,13 @@
                                         </Frame>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </Frame>
+                        </CollectionView>
 
                         <Frame
                             BackgroundColor="#cc676767"
                             BorderColor="Transparent"
 
-                            Margin="0, 60, 0, 0"
+                            Margin="0, 50, 0, 0"
 
                             CornerRadius="30"
 
@@ -93,7 +88,7 @@
                                     CornerRadius="7" />
 
 
-                                <HorizontalStackLayout HorizontalOptions="Center" Margin="0, 150, 0, 0">
+                                <HorizontalStackLayout HorizontalOptions="Center" Margin="0, 140, 0, 0">
 
                                     <Frame
                                         BackgroundColor="#3aAAAAAA"

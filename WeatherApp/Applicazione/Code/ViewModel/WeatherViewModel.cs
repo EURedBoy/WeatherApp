@@ -2,7 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WeatherApp.Applicazione.Code.Model;
 using WeatherApp.Applicazione.Code.Service;
-using WeatherApp.Applicazione.Design;
+using WeatherApp.Applicazione.Design.Ios;
 
 namespace WeatherApp.Applicazione.Code.ViewModel;
 
@@ -44,6 +44,8 @@ public partial class WeatherViewModel : BaseViewModel
                         ?? new List<WeatherDay>();
         CurrentWeather = apiResponse.current 
                          ?? new WeatherDay("NaN", 0, 0, 0, 0, "CET", 0, new List<WeatherHour>());
+
+        CurrentWeather.RainFall = WeeklyWeather[0].RainFall; //Magari togliere
         
         Background = CurrentWeather.Date.Hour switch
         {

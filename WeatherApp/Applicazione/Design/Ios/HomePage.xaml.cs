@@ -1,6 +1,6 @@
 using WeatherApp.Applicazione.Code.Base;
 
-namespace WeatherApp.Applicazione.Design;
+namespace WeatherApp.Applicazione.Design.Ios;
 
 public partial class HomePage : BasePage
 {

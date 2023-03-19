@@ -60,4 +60,24 @@
       <Folder Include="Applicazione\Code\Control" />
     </ItemGroup>
 
+    <ItemGroup>
+      <MauiXaml Update="Applicazione\Design\Ios\HomePage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+      <MauiXaml Update="Applicazione\Design\Ios\SearchPage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Applicazione\Design\Ios\HomePage.xaml.cs">
+        <DependentUpon>HomePage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Applicazione\Design\Ios\SearchPage.xaml.cs">
+        <DependentUpon>SearchPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>

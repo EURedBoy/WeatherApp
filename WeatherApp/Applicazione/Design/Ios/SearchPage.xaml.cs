@@ -1,7 +1,7 @@
 using WeatherApp.Applicazione.Code.Base;
 using WeatherApp.Applicazione.Code.ViewModel;
 
-namespace WeatherApp.Applicazione.Design;
+namespace WeatherApp.Applicazione.Design.Ios;
 
 public partial class SearchPage : BasePage
 {

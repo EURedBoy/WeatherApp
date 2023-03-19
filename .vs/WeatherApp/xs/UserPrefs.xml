@@ -1,31 +1,22 @@
 ﻿<Properties StartupConfiguration="{0D2A8779-6F5E-43E4-994D-A2D76E67AA33}|Default">
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.WeatherApp PreferredExecutionTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="WeatherApp/Applicazione/Code/ViewModel/WeatherViewModel.cs">
     <Files>
-      <File FileName="WeatherApp/Applicazione/Code/ViewModel/WeatherViewModel.cs" Line="1" Column="1" />
-      <File FileName="WeatherApp/Applicazione/Code/Service/WeatherService.cs" Line="1" Column="1" />
-      <File FileName="WeatherApp/WeatherApp.csproj" Line="39" Column="1" />
+      <File FileName="WeatherApp/Applicazione/Code/ViewModel/WeatherViewModel.cs" Line="11" Column="12" />
+      <File FileName="WeatherApp/Applicazione/Code/Service/WeatherService.cs" />
+      <File FileName="WeatherApp/WeatherApp.csproj" />
       <File FileName="WeatherApp/Applicazione/Code/ViewModel/SearchViewModel.cs" />
       <File FileName="WeatherApp/Applicazione/Design/HomePage.xaml" />
-      <File FileName="WeatherApp/Platforms/iOS/Program.cs" Line="13" Column="1" />
+      <File FileName="WeatherApp/Platforms/iOS/Program.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="WeatherApp" expanded="True">
+          <Node name="WeatherApp" expanded="True" selected="True">
             <Node name="WeatherApp" expanded="True">
               <Node name="Applicazione" expanded="True">
                 <Node name="Code" expanded="True">
                   <Node name="Service" expanded="True" />
-                  <Node name="ViewModel" expanded="True">
-                    <Node name="WeatherViewModel.cs" selected="True" />
-                  </Node>
+                  <Node name="ViewModel" expanded="True" />
                 </Node>
                 <Node name="Design" expanded="True">
                   <Node name="HomePage.xaml" expanded="True" />
@@ -43,5 +34,12 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008030-00190D841151402E" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.WeatherApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008030-00190D841151402E" />
 </Properties>
