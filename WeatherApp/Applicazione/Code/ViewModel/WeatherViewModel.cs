@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using WeatherApp.Applicazione.Code.Base;
 using WeatherApp.Applicazione.Code.Model;
 using WeatherApp.Applicazione.Code.Service;
 using WeatherApp.Applicazione.Design.Ios;
@@ -8,24 +9,20 @@ namespace WeatherApp.Applicazione.Code.ViewModel;
 
 public partial class WeatherViewModel : BaseViewModel
 {
-    private WeatherService service;
+    [ObservableProperty] public ImageSource background = ImageSource.FromFile("day_background.jpg");
 
     private string citt = "Costamasnaga";
+
+    [ObservableProperty] public WeatherDay currentWeather;
+
+    [ObservableProperty] public bool isReloading;
+
     private double lati = 45.8;
     private double longi = 9.279999;
+    private readonly WeatherService service;
 
-    [ObservableProperty] 
-    public ImageSource background = ImageSource.FromFile("day_background.jpg");
+    [ObservableProperty] public List<WeatherDay> weeklyWeather;
 
-    [ObservableProperty] 
-    public WeatherDay currentWeather;
-
-    [ObservableProperty] 
-    public bool isReloading;
-
-    [ObservableProperty] 
-    public List<WeatherDay> weeklyWeather;
-    
     public WeatherViewModel()
     {
         service = App.WeatherService;
@@ -33,16 +30,14 @@ public partial class WeatherViewModel : BaseViewModel
         Task.Run(async () => await OnLoad());
     }
 
-    public async Task Update()
+    private async Task Update()
     {
+        var apiResponse = await service.GetWeatherAsync(service.SelectedLocation);
 
-        Locations loc = service.SelectedLocation;
-        (List<WeatherDay> week, WeatherDay current) apiResponse = await service.GetWeatherAsync(loc.Name, loc.Longitude, loc.Latitude);
-        
 
-        WeeklyWeather = apiResponse.week 
+        WeeklyWeather = apiResponse.week
                         ?? new List<WeatherDay>();
-        CurrentWeather = apiResponse.current 
+        CurrentWeather = apiResponse.current
                          ?? new WeatherDay("NaN", 0, 0, 0, 0, "CET", 0, new List<WeatherHour>());
 
         Background = CurrentWeather.Date.Hour switch
@@ -51,7 +46,6 @@ public partial class WeatherViewModel : BaseViewModel
             >= 17 and < 20 => ImageSource.FromFile("sunset_background.jpg"),
             _ => ImageSource.FromFile("night_background.jpg")
         };
-        
     }
 
     private async Task OnLoad()
@@ -60,11 +54,12 @@ public partial class WeatherViewModel : BaseViewModel
         await Update();
         IsBusy = false;
     }
-    
+
     [RelayCommand]
     private async void OnRefresh()
     {
         IsReloading = true;
+        await service.UpdateLocationIfPossible();
         await Update();
         IsReloading = false;
     }
@@ -72,10 +67,8 @@ public partial class WeatherViewModel : BaseViewModel
     [RelayCommand]
     private async void GotoSearch()
     {
-        SearchViewModel viewModel = new SearchViewModel();
+        var viewModel = new SearchViewModel();
         viewModel.Update += Update;
-        await App.Current.MainPage.Navigation.PushAsync(new SearchPage(viewModel));
+        await Application.Current.MainPage.Navigation.PushAsync(new SearchPage(viewModel));
     }
-    
-    
 }

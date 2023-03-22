@@ -27,5 +27,7 @@
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>CFBundleIdentifier</key>
 	<string>red.TestIphone</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location Permission</string>
 </dict>
 </plist>

@@ -57,10 +57,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Applicazione\Code\Control" />
-    </ItemGroup>
-
-    <ItemGroup>
       <MauiXaml Update="Applicazione\Design\Ios\HomePage.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>

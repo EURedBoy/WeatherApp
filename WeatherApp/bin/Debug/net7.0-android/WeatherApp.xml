@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WeatherApp</name>
+    </assembly>
+    <members>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.BaseViewModel.IsBusy">
+            <inheritdoc cref="F:WeatherApp.Applicazione.Code.ViewModel.BaseViewModel.isBusy"/>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.BaseViewModel.Title">
+            <inheritdoc cref="F:WeatherApp.Applicazione.Code.ViewModel.BaseViewModel.title"/>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.LocationsList">
+            <inheritdoc cref="F:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.locationsList"/>
+        </member>
+        <member name="F:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.backCommand">
+            <summary>The backing field for <see cref="P:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.Back"/>.</summary>
+        </member>
+        <member name="F:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.selectCommand">
+            <summary>The backing field for <see cref="P:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.SelectCommand"/>.</summary>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.SelectCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:WeatherApp.Applicazione.Code.ViewModel.SearchViewModel.Select(WeatherApp.Applicazione.Code.Model.Locations)"/>.</summary>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.Background">
+            <inheritdoc cref="F:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.background"/>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.CurrentWeather">
+            <inheritdoc cref="F:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.currentWeather"/>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.IsReloading">
+            <inheritdoc cref="F:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.isReloading"/>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.WeeklyWeather">
+            <inheritdoc cref="F:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.weeklyWeather"/>
+        </member>
+        <member name="F:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.refreshCommand">
+            <summary>The backing field for <see cref="P:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.RefreshCommand"/>.</summary>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.RefreshCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.OnRefresh"/>.</summary>
+        </member>
+        <member name="F:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.gotoSearchCommand">
+            <summary>The backing field for <see cref="P:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.GotoSearchCommand"/>.</summary>
+        </member>
+        <member name="P:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.GotoSearchCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:WeatherApp.Applicazione.Code.ViewModel.WeatherViewModel.GotoSearch"/>.</summary>
+        </member>
+    </members>
+</doc>

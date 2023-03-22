@@ -7,6 +7,5 @@ public abstract class BasePage : ContentPage
         NavigationPage.SetHasNavigationBar(this, false);
     }
 
-    protected Application Instance { get; } = App.Current;
-    
+    protected Application Instance { get; } = Application.Current;
 }

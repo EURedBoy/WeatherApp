@@ -130,7 +130,7 @@
 
                                         CornerRadius="40">
                                         <Image Source="menu.png" />
-                                        
+
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding GotoSearchCommand}" />
                                         </Frame.GestureRecognizers>
@@ -171,7 +171,7 @@
                            HorizontalOptions="Fill"
                            VerticalOptions="Center"
                            Color="AliceBlue"
-                           Grid.ColumnSpan="2"/>
+                           Grid.ColumnSpan="2" />
     </Grid>
 
 </base:BasePage>

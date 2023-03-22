@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{0D2A8779-6F5E-43E4-994D-A2D76E67AA33}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="WeatherApp/Applicazione/Code/ViewModel/WeatherViewModel.cs">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../usr/local/share/dotnet/sdk/7.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets">
     <Files>
-      <File FileName="WeatherApp/Applicazione/Code/ViewModel/WeatherViewModel.cs" Line="11" Column="12" />
-      <File FileName="WeatherApp/Applicazione/Code/Service/WeatherService.cs" />
-      <File FileName="WeatherApp/WeatherApp.csproj" />
-      <File FileName="WeatherApp/Applicazione/Code/ViewModel/SearchViewModel.cs" />
-      <File FileName="WeatherApp/Applicazione/Design/HomePage.xaml" />
-      <File FileName="WeatherApp/Platforms/iOS/Program.cs" />
+      <File FileName="WeatherApp/Platforms/iOS/Info.plist" />
+      <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" Line="267" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="WeatherApp" expanded="True" selected="True">
+          <Node name="WeatherApp" expanded="True">
             <Node name="WeatherApp" expanded="True">
               <Node name="Applicazione" expanded="True">
                 <Node name="Code" expanded="True">
@@ -19,27 +19,33 @@
                   <Node name="ViewModel" expanded="True" />
                 </Node>
                 <Node name="Design" expanded="True">
-                  <Node name="HomePage.xaml" expanded="True" />
+                  <Node name="Ios" expanded="True">
+                    <Node name="HomePage.xaml" expanded="True" />
+                    <Node name="SearchPage.xaml" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
               <Node name="Platforms" expanded="True">
-                <Node name="iOS" expanded="True" />
+                <Node name="Android" expanded="True" />
+                <Node name="iOS" expanded="True">
+                  <Node name="Info.plist" selected="True" />
+                </Node>
               </Node>
               <Node name="Resources" expanded="True">
-                <Node name="Images" expanded="True" />
+                <Node name="Images" expanded="True">
+                  <Node name="SearchPage" expanded="True" />
+                </Node>
               </Node>
+              <Node name="App.xaml" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008030-00190D841151402E" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.WeatherApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008030-00190D841151402E" />
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="13.1.0.1" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008030-00190D841151402E" />
 </Properties>
