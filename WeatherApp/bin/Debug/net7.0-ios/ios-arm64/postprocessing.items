@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="WeatherApp.app/WeatherApp">
+      <BCSymbolMapName>WeatherApp.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>false</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>false</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>WeatherApp.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile>/Users/alex/RiderProjects/WeatherTemp/WeatherApp/obj/Debug/net7.0-ios/ios-arm64/mtouch-symbols.list</SymbolFile>
+      <DSymName>WeatherApp.app.dSYM</DSymName>
+      <SourceProjectPath>/Users/alex/RiderProjects/WeatherTemp/WeatherApp</SourceProjectPath>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>

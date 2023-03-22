@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alex/RiderProjects/WeatherApp/WeatherApp/WeatherApp.csproj": {}
+    "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj": {}
   },
   "projects": {
-    "/Users/alex/RiderProjects/WeatherApp/WeatherApp/WeatherApp.csproj": {
+    "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alex/RiderProjects/WeatherApp/WeatherApp/WeatherApp.csproj",
+        "projectUniqueName": "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj",
         "projectName": "WeatherApp",
-        "projectPath": "/Users/alex/RiderProjects/WeatherApp/WeatherApp/WeatherApp.csproj",
+        "projectPath": "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj",
         "packagesPath": "/Users/alex/.nuget/packages/",
-        "outputPath": "/Users/alex/RiderProjects/WeatherApp/WeatherApp/obj/",
+        "outputPath": "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/obj/",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "configFilePaths": [
@@ -23,6 +23,7 @@
           "net7.0-maccatalyst"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -317,7 +318,7 @@
         "android-x86": {
           "#import": []
         },
-        "iossimulator-x64": {
+        "ios-arm64": {
           "#import": []
         },
         "maccatalyst-x64": {

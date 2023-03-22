@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QV14+H3beD9hqvklZArXzysvSexQf75h1nlHD1G5LpGkJItH2CHqxwSEOVZvkNF2kmJdve2bu0pQ169VBCaFvw==",
+  "dgSpecHash": "9/zqNN4oo5srHjAU/C65jQjLZTwVaSStETKd4kjy++F6aS66u3OQjNL+sxMn+Y/iX87MvgzBYQwvKu7ESvIj2g==",
   "success": true,
-  "projectFilePath": "/Users/alex/RiderProjects/WeatherApp/WeatherApp/WeatherApp.csproj",
+  "projectFilePath": "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj",
   "expectedPackageFiles": [
     "/Users/alex/.nuget/packages/communitytoolkit.mvvm/8.2.0-preview1/communitytoolkit.mvvm.8.2.0-preview1.nupkg.sha512",
     "/Users/alex/.nuget/packages/googlegson/2.9.1.1/googlegson.2.9.1.1.nupkg.sha512",

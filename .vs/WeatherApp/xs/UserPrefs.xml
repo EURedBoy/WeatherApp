@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{0D2A8779-6F5E-43E4-994D-A2D76E67AA33}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="13.1.0.1" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="../../../../usr/local/share/dotnet/sdk/7.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets">
     <Files>
@@ -27,9 +27,7 @@
               </Node>
               <Node name="Platforms" expanded="True">
                 <Node name="Android" expanded="True" />
-                <Node name="iOS" expanded="True">
-                  <Node name="Info.plist" selected="True" />
-                </Node>
+                <Node name="iOS" expanded="True" />
               </Node>
               <Node name="Resources" expanded="True">
                 <Node name="Images" expanded="True">
@@ -43,9 +41,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.WeatherApp PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008030-00190D841151402E" />
-  <MonoDevelop.MonoDroid LastDeploySdkVersion="13.1.0.1" />
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008030-00190D841151402E" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.ItemProperties.WeatherApp PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

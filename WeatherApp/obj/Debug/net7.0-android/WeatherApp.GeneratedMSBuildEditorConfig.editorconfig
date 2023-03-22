@@ -12,51 +12,51 @@ build_property.EnableSingleFileAnalyzer = true
 build_property.EnableTrimAnalyzer = false
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = WeatherApp
-build_property.ProjectDir = /Users/alex/RiderProjects/WeatherApp/WeatherApp/
+build_property.ProjectDir = /Users/alex/RiderProjects/WeatherTemp/WeatherApp/
 
-[/Users/alex/RiderProjects/WeatherApp/WeatherApp/App.xaml]
+[/Users/alex/RiderProjects/WeatherTemp/WeatherApp/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WeatherApp.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[/Users/alex/RiderProjects/WeatherApp/WeatherApp/Applicazione/Design/Android/AndroidHomePage.xaml]
+[/Users/alex/RiderProjects/WeatherTemp/WeatherApp/Applicazione/Design/Android/AndroidHomePage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WeatherApp.Applicazione.Design.Android.AndroidHomePage.xaml
 build_metadata.AdditionalFiles.TargetPath = Applicazione/Design/Android/AndroidHomePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Applicazione/Design/Android/AndroidHomePage.xaml
 
-[/Users/alex/RiderProjects/WeatherApp/WeatherApp/Applicazione/Design/Ios/HomePage.xaml]
+[/Users/alex/RiderProjects/WeatherTemp/WeatherApp/Applicazione/Design/Ios/HomePage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WeatherApp.Applicazione.Design.Ios.HomePage.xaml
 build_metadata.AdditionalFiles.TargetPath = Applicazione/Design/Ios/HomePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Applicazione/Design/Ios/HomePage.xaml
 
-[/Users/alex/RiderProjects/WeatherApp/WeatherApp/Applicazione/Design/Ios/SearchPage.xaml]
+[/Users/alex/RiderProjects/WeatherTemp/WeatherApp/Applicazione/Design/Ios/SearchPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WeatherApp.Applicazione.Design.Ios.SearchPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Applicazione/Design/Ios/SearchPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Applicazione/Design/Ios/SearchPage.xaml
 
-[/Users/alex/RiderProjects/WeatherApp/WeatherApp/AppShell.xaml]
+[/Users/alex/RiderProjects/WeatherTemp/WeatherApp/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WeatherApp.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[/Users/alex/RiderProjects/WeatherApp/WeatherApp/MainPage.xaml]
+[/Users/alex/RiderProjects/WeatherTemp/WeatherApp/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WeatherApp.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[/Users/alex/RiderProjects/WeatherApp/WeatherApp/Resources/Styles/Colors.xaml]
+[/Users/alex/RiderProjects/WeatherTemp/WeatherApp/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WeatherApp.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
 
-[/Users/alex/RiderProjects/WeatherApp/WeatherApp/Resources/Styles/Styles.xaml]
+[/Users/alex/RiderProjects/WeatherTemp/WeatherApp/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WeatherApp.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
