@@ -14,30 +14,39 @@ public class WeatherApiUtils
         return TimeZoneInfo.ConvertTime(dateTime, tz);
     }
 
-    public static (ImageSource img, string text) CodeToImage(int code)
+    public static (string text, ImageSource img) CodeToImage(int code, DateTime date)
     {
         return code switch
         {
-            0 => (ImageSource.FromFile("cloud_icon.png"), "sereno"),
-            1 => (ImageSource.FromFile("cloud_icon.png"), "parzialmente soleggiato"),
-            2 => (ImageSource.FromFile("cloud_icon.png"), "clear sky"),
-            3 => (ImageSource.FromFile("cloud_icon.png"), "coperto"),
-            45 => (ImageSource.FromFile("cloud_icon.png"), "nebbia"),
-            48 => (ImageSource.FromFile("cloud_icon.png"), "deposito di brina"),
-            51 => (ImageSource.FromFile("cloud_icon.png"), "pioviggine"),
-            53 => (ImageSource.FromFile("cloud_icon.png"), "pioviggine"),
-            55 => (ImageSource.FromFile("cloud_icon.png"), "pioviggine"),
-            56 => (ImageSource.FromFile("cloud_icon.png"), "nevischio"),
-            57 => (ImageSource.FromFile("cloud_icon.png"), "nevischio"),
-            61 => (ImageSource.FromFile("cloud_icon.png"), "pioggia leggera"),
-            63 => (ImageSource.FromFile("cloud_icon.png"), "pioggia moderata"),
-            65 => (ImageSource.FromFile("cloud_icon.png"), "diluvio"),
-            66 => (ImageSource.FromFile("cloud_icon.png"), "pioggia ghiacciata"),
-            67 => (ImageSource.FromFile("cloud_icon.png"), "pioggia ghiacciata"),
-            71 => (ImageSource.FromFile("cloud_icon.png"), "nevischio"),
-            73 => (ImageSource.FromFile("cloud_icon.png"), "neve"),
-            75 => (ImageSource.FromFile("cloud_icon.png"), "tormenta"),
-            _ => (ImageSource.FromFile("cloud_icon.png"), "developer pigro :)")
+            0 => ("Cielo sereno", date.Hour is > 6 and < 21 ? ImageSource.FromFile("clear_day") : ImageSource.FromFile("clear_night")),
+            1 => ("Prevalentemente limpido", date.Hour is > 6 and < 21 ? ImageSource.FromFile("cloudy_day") : ImageSource.FromFile("cloudy_night")),
+            2 => ("Prevalentemente nuvoloso", date.Hour is > 6 and < 21 ? ImageSource.FromFile("cloudy_day") : ImageSource.FromFile("cloudy_night")),
+            3 => ("Coperto", ImageSource.FromFile("cloud")),
+            45 => ("Nebbia", ImageSource.FromFile("fog")),
+            48 => ("Nebbia con brina", ImageSource.FromFile("fog")),
+            51 => ("Pioggerellina di scarsa intensità", ImageSource.FromFile("rain")),
+            53 => ("Pioggerellina di moderata intensità", ImageSource.FromFile("rain")),
+            55 => ("Pioggerellina intensa", ImageSource.FromFile("rain")),
+            56 => ("Pioggerellina gelata di scarsa intensità", ImageSource.FromFile("rain")),
+            57 => ("Pioggerellina gelata intensa", ImageSource.FromFile("rain")),
+            61 => ("Pioggia di scarsa intensità", ImageSource.FromFile("rain")),
+            63 => ("Pioggia di moderata intensità", ImageSource.FromFile("rain")),
+            65 => ("Pioggia molto intensa", ImageSource.FromFile("rain")),
+            66 => ("Pioggia gelata di scarsa intensità", ImageSource.FromFile("rain")),
+            67 => ("Pioggia gelata intensa", ImageSource.FromFile("rain")),
+            71 => ("Nevicata di lieve intensità", ImageSource.FromFile("snow")),
+            73 => ("Nevicata di media intensità", ImageSource.FromFile("snow")),
+            75 => ("Nevicata intensa", ImageSource.FromFile("snow")),
+            77 => ("Granelli di neve", ImageSource.FromFile("snow")),
+            80 => ("Deboli rovesci di pioggia", ImageSource.FromFile("rain")),
+            81 => ("Moderati rovesci di pioggia", ImageSource.FromFile("rain")),
+            82 => ("Violenti rovesci di pioggia", ImageSource.FromFile("rain")),
+            85 => ("Leggeri rovesci di neve", ImageSource.FromFile("snow")),
+            86 => ("Pesanti rovesci di neve", ImageSource.FromFile("snow")),
+            95 => ("Temporale", ImageSource.FromFile("thunderstorm")),
+            96 => ("Temporale con lieve grandine", ImageSource.FromFile("hail")),
+            99 => ("Temporale con forte grandine", ImageSource.FromFile("hail")),
+            _ => (string.Empty, ImageSource.FromFile("cloud"))
         };
     }
 }

@@ -10,33 +10,37 @@ namespace WeatherApp.Applicazione.Code.Service;
 
 public class WeatherService
 {
-    private readonly Locations defaultLocation = new("Costamasnaga", 45.8, 9.279999, "IT");
+    private readonly Locations defaultLocation = new("Costamasnaga", "Lombardia",45.8, 9.279999, false, "IT");
     private readonly IGeolocation geolocation;
+    private readonly IGeocoding geocoding;
+    
     private readonly HttpClient httpClient;
+
+    public bool isGeoActive;
 
     public WeatherService()
     {
+        
+        
         var handler = new HttpClientHandler();
         geolocation = Geolocation.Default;
+        geocoding = Geocoding.Default;
 
         handler.DefaultProxyCredentials = CredentialCache.DefaultCredentials;
         httpClient = new HttpClient(handler, true);
 
 
         SelectedLocation = defaultLocation;
-        Init().Wait();
+
+        isGeoActive = true;
+        Init();
     }
 
     public Locations SelectedLocation { get; set; }
 
-    private async Task Init()
+    private void Init()
     {
-        if (Preferences.Default.ContainsKey("geo-location") && await CheckPermission())
-        {
-            var currentLocation = await GetCurrentLocation();
-            SelectedLocation = currentLocation ?? defaultLocation;
-        }
-        else
+        if (!Preferences.Default.ContainsKey("geo-location"))
         {
             //TODO: Temporaneo
             if (File.Exists(WeatherApiUtils.PreferencePath))
@@ -45,10 +49,21 @@ public class WeatherService
         }
     }
 
-    public async Task<(List<WeatherDay> week, WeatherDay current)> GetWeatherAsync(Locations loc)
+    public async Task<(List<WeatherDay> week, WeatherDay current)> GetWeatherAsync()
     {
+        isGeoActive = false;
+        if (Preferences.Default.ContainsKey("geo-location"))
+        {
+            isGeoActive = true;
+            var currentLoc = await GetCurrentLocation();
+            if (currentLoc == null) return (null, null);
+
+            SelectedLocation = currentLoc;
+        }
+
+
         FormattableString formattable =
-            $"https://api.open-meteo.com/v1/forecast?latitude={loc.Latitude}&longitude={loc.Longitude}&&current_weather=true&hourly=temperature_2m,precipitation_probability,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max&timeformat=unixtime&timezone=auto";
+            $"https://api.open-meteo.com/v1/forecast?latitude={SelectedLocation.Latitude}&longitude={SelectedLocation.Longitude}&&current_weather=true&hourly=temperature_2m,precipitation_probability,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max&timeformat=unixtime&timezone=auto";
         var url = FormattableString.Invariant(formattable);
 
         var response = await httpClient.GetAsync(url);
@@ -64,38 +79,41 @@ public class WeatherService
         var weatherDays = new List<WeatherDay>();
 
         var week = weatherApi.Daily;
+        var hourly = weatherApi.Hourly;
 
+        int j = 0;
         for (var i = 0; i < week.Time.Count; i++)
-            //Gestire quelli orari
-            weatherDays.Add(new WeatherDay(loc.Name,
+        {
+            List<WeatherHour> hour = new List<WeatherHour>();
+
+            int k = j + 24;
+            for (; j < k; j++)
+                hour.Add(new WeatherHour(
+                    hourly.Time[j],
+                    hourly.Windspeed10m[j],
+                    hourly.PrecipitationProbability[j],
+                    hourly.Temperature2m[j])
+                );
+
+                //Gestire quelli orari
+            weatherDays.Add(new WeatherDay(SelectedLocation.Name,
                 (week.Temperature2mMax[i] + week.Temperature2mMin[i]) / 2, //Temperatura media
                 week.Windspeed10mMax[i],
                 week.PrecipitationProbabilityMax[i],
                 week.Time[i],
                 weatherApi.Timezone,
                 week.Weathercode[i],
-                new List<WeatherHour>())
+                hour)
             );
+        }
 
         var current = weatherApi.CurrentWeather;
-        var currentWeather = new WeatherDay(loc.Name, current.Temperature, current.Windspeed, weatherDays[0].RainFall,
+        var currentWeather = new WeatherDay(SelectedLocation.Name, current.Temperature, current.Windspeed, weatherDays[0].RainFall,
             current.Time,
             weatherApi.Timezone,
             current.Weathercode, new List<WeatherHour>());
 
         return (weatherDays, currentWeather);
-    }
-
-    public async Task UpdateLocationIfPossible()
-    {
-        if (!Preferences.Default.ContainsKey("geo-location")) return;
-
-        SelectedLocation = await GetCurrentLocation();
-        if (SelectedLocation == null)
-        {
-            SelectedLocation = defaultLocation;
-            await Alerts.Send(AlertTypes.Error, "C'è stato un errore nel trovare la tua posizione");
-        }
     }
 
     public async Task<List<Locations>> GetLocationsFromCity(string city)
@@ -142,13 +160,13 @@ public class WeatherService
                 return null;
             }
 
-            var placemarks = await Geocoding.Default.GetPlacemarksAsync(location.Latitude, location.Longitude);
+            var placemarks = await geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude);
             var placemark = placemarks?.FirstOrDefault();
 
             if (placemark == null) return null;
 
-            return new Locations(placemark.Locality, location.Latitude, location.Longitude,
-                placemark.CountryCode); //Cambiare placemark probabilmente
+            return new Locations(placemark.Locality, placemark.SubLocality, location.Latitude, location.Longitude,
+                false, placemark.CountryCode); //Cambiare placemark probabilmente
         }
         // Catch one of the following exceptions:
         //   FeatureNotSupportedException

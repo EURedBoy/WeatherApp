@@ -11,14 +11,12 @@ public partial class WeatherViewModel : BaseViewModel
 {
     [ObservableProperty] public ImageSource background = ImageSource.FromFile("day_background.jpg");
 
-    private string citt = "Costamasnaga";
-
     [ObservableProperty] public WeatherDay currentWeather;
 
     [ObservableProperty] public bool isReloading;
 
-    private double lati = 45.8;
-    private double longi = 9.279999;
+    [ObservableProperty] public bool isGeoActive;
+
     private readonly WeatherService service;
 
     [ObservableProperty] public List<WeatherDay> weeklyWeather;
@@ -26,13 +24,14 @@ public partial class WeatherViewModel : BaseViewModel
     public WeatherViewModel()
     {
         service = App.WeatherService;
-
+        
         Task.Run(async () => await OnLoad());
     }
 
     private async Task Update()
     {
-        var apiResponse = await service.GetWeatherAsync(service.SelectedLocation);
+        var apiResponse = await service.GetWeatherAsync();
+        IsGeoActive = service.isGeoActive;
 
 
         WeeklyWeather = apiResponse.week
@@ -59,7 +58,6 @@ public partial class WeatherViewModel : BaseViewModel
     private async void OnRefresh()
     {
         IsReloading = true;
-        await service.UpdateLocationIfPossible();
         await Update();
         IsReloading = false;
     }

@@ -52,7 +52,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0-preview1" />
+        <PackageReference Include="FreakyControls" Version="0.4.3-pre" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
     </ItemGroup>
 

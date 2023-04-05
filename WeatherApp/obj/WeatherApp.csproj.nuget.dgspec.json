@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj": {}
+    "/Users/alex/RiderProjects/WeatherAppV2/WeatherApp/WeatherApp.csproj": {}
   },
   "projects": {
-    "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj": {
+    "/Users/alex/RiderProjects/WeatherAppV2/WeatherApp/WeatherApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj",
+        "projectUniqueName": "/Users/alex/RiderProjects/WeatherAppV2/WeatherApp/WeatherApp.csproj",
         "projectName": "WeatherApp",
-        "projectPath": "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/WeatherApp.csproj",
+        "projectPath": "/Users/alex/RiderProjects/WeatherAppV2/WeatherApp/WeatherApp.csproj",
         "packagesPath": "/Users/alex/.nuget/packages/",
-        "outputPath": "/Users/alex/RiderProjects/WeatherTemp/WeatherApp/obj/",
+        "outputPath": "/Users/alex/RiderProjects/WeatherAppV2/WeatherApp/obj/",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "configFilePaths": [
@@ -23,7 +23,6 @@
           "net7.0-maccatalyst"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,9 +49,17 @@
         "net7.0-android33.0": {
           "targetAlias": "net7.0-android",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.0-preview1, )"
+            },
+            "FreakyControls": {
+              "target": "Package",
+              "version": "[0.4.3-pre, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
@@ -172,9 +179,17 @@
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.0-preview1, )"
+            },
+            "FreakyControls": {
+              "target": "Package",
+              "version": "[0.4.3-pre, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
@@ -239,9 +254,17 @@
         "net7.0-maccatalyst16.1": {
           "targetAlias": "net7.0-maccatalyst",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.0-preview1, )"
+            },
+            "FreakyControls": {
+              "target": "Package",
+              "version": "[0.4.3-pre, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
@@ -318,7 +341,7 @@
         "android-x86": {
           "#import": []
         },
-        "ios-arm64": {
+        "iossimulator-x64": {
           "#import": []
         },
         "maccatalyst-x64": {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
 <base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -14,25 +14,61 @@
 
     <VerticalStackLayout>
         <HorizontalStackLayout>
-            <Button HeightRequest="20" WidthRequest="20" Command="{Binding BackCommand}" />
-            <Entry Text="{Binding SearchText}"
-                   TextColor="White"
-                   Placeholder="Search a City"
-                   PlaceholderColor="#A1A1A1"
-                   WidthRequest="288"
-                   BackgroundColor="#313869"
+            <Image Source="back_button" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" Margin="20, 0, 10, 0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Border WidthRequest="328"
+                   HeightRequest="39" 
+                   
                    HorizontalOptions="Center"
-                   HeightRequest="39" VerticalTextAlignment="Center" Margin="10, 0, 0, 0" />
-            <ImageButton Source="current_location.png" HeightRequest="20" WidthRequest="20"
-                         VerticalOptions="Center"
-                         Margin="20, 0, 0, 0"
-                         BorderColor="Transparent"
-                         Command="{Binding GeoLocationCommand}" />
+                   VerticalOptions="Center"
+                   
+                   BackgroundColor="#313869"
+                   Stroke="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <HorizontalStackLayout>
+                    <Image Source="search_icon"
+                           
+                           VerticalOptions="Center"
+                           BackgroundColor="Transparent"
+                           
+                           WidthRequest="30"
+                           HeightRequest="30"/>
+                    
+                    <Entry Text="{Binding SearchText}"
+                           TextColor="White"
+                           Placeholder="Search a City"
+                           PlaceholderColor="#A1A1A1"
+                           
+                           WidthRequest="248"
+                           HeightRequest="39"
+                           
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           
+                           BackgroundColor="Transparent"/>
+                    
+                    <Image Source="current_location" 
+                           HeightRequest="30" WidthRequest="30"
+                           VerticalOptions="Center"
+                           BackgroundColor="Transparent">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GeoLocationCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    
+                </HorizontalStackLayout>
+            </Border>
         </HorizontalStackLayout>
         <CollectionView
             ItemsSource="{Binding LocationsList}"
-            HeightRequest="500"
-            Margin="50, 30">
+            HeightRequest="460"
+            Margin="50, 30"
+            BackgroundColor="Transparent">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20" />
             </CollectionView.ItemsLayout>
@@ -42,21 +78,64 @@
                         <Image Source="search_back.png" />
                         <Grid>
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent">
-                                <HorizontalStackLayout>
-                                    <Label Text="{Binding Name}"
+                                <VerticalStackLayout>
+                                    <Image
+                                        Source="{Binding Heart}" 
+                                        
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"
+                                        
+                                        WidthRequest="20"
+                                        HeightRequest="20">
+                                        
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:SearchViewModel }}, Path=AddFavoriteCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <HorizontalStackLayout>
+                                        <Frame WidthRequest="45" 
+                                            HeightRequest="45" 
+                                            VerticalOptions="Center"
+                                            
+                                            Margin="10, 0, 0, 0"
+                                            
+                                            CornerRadius="20"
+                                            IsClippedToBounds="True"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="Transparent">
+                                            <Image Source="{Binding Icon}" 
+                                                   Aspect="AspectFill"
+                                                   
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"
+                                                   
+                                                   WidthRequest="45"
+                                                   HeightRequest="45"
+                                                   />
+                                        </Frame>
+                                        <Label Text="{Binding Name, StringFormat='{0},'}"
+                                               FontFamily="RobotoMedium"
+                                               FontSize="25"
+                                               Margin="10, 0, 10, 0"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding CountryCode}"
+                                               FontFamily="RobotoMedium"
+                                               FontSize="30"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding Provincia}"
                                            FontFamily="RobotoMedium"
-                                           FontSize="25"
-                                           Margin="30, 0, 10, 0"
+                                           FontSize="10"
                                            TextColor="White"
-                                           HorizontalOptions="Center"
+                                           HorizontalOptions="End"
                                            VerticalOptions="Center" />
-                                    <Label Text="{Binding CountryCode}"
-                                           FontFamily="RobotoMedium"
-                                           FontSize="30"
-                                           TextColor="White"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center" />
-                                </HorizontalStackLayout>
+                                </VerticalStackLayout>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:SearchViewModel }}, Path=SelectCommand}"
@@ -68,6 +147,94 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Grid>
+            <Image Source="preference.png" Aspect="Fill"
+                   BackgroundColor="Transparent"/>
+            <Grid>
+                <CollectionView
+            ItemsSource="{Binding FavoriteLocations}"
+            Margin="50,40, 50, 0"
+            BackgroundColor="Transparent">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Locations">
+                    <Grid>
+                        <Image Source="search_back.png" />
+                        <Grid>
+                            <Frame BackgroundColor="Transparent" BorderColor="Transparent">
+                                <VerticalStackLayout>
+                                    <Image
+                                        Source="{Binding Heart}" 
+                                        
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"
+                                        
+                                        WidthRequest="20"
+                                        HeightRequest="20">
+                                        
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:SearchViewModel }}, Path=AddFavoriteCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <HorizontalStackLayout>
+                                        <Frame WidthRequest="45" 
+                                            HeightRequest="45" 
+                                            VerticalOptions="Center"
+                                            
+                                            Margin="10, 0, 0, 0"
+                                            
+                                            CornerRadius="20"
+                                            IsClippedToBounds="True"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="Transparent">
+                                            <Image Source="{Binding Icon}" 
+                                                   Aspect="AspectFill"
+                                                   
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"
+                                                   
+                                                   WidthRequest="45"
+                                                   HeightRequest="45"
+                                                   />
+                                        </Frame>
+                                        <Label Text="{Binding Name, StringFormat='{0},'}"
+                                               FontFamily="RobotoMedium"
+                                               FontSize="25"
+                                               Margin="10, 0, 10, 0"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding CountryCode}"
+                                               FontFamily="RobotoMedium"
+                                               FontSize="30"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding Provincia}"
+                                           FontFamily="RobotoMedium"
+                                           FontSize="10"
+                                           TextColor="White"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center" />
+                                </VerticalStackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:SearchViewModel }}, Path=SelectCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+            </Grid>
+        </Grid>
     </VerticalStackLayout>
 
 </base:BasePage>

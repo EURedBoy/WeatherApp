@@ -14,7 +14,7 @@ public class WeatherDay
 
         Date = WeatherApiUtils.UnixToDate(unix, timezone);
 
-        var tempCode = WeatherApiUtils.CodeToImage(code);
+        var tempCode = WeatherApiUtils.CodeToImage(code, Date);
         Description = tempCode.text;
         Icon = tempCode.img;
 
@@ -38,14 +38,16 @@ public class WeatherDay
 
 public class WeatherHour
 {
-    public WeatherHour(int hour, double windSpeed, double rainFall)
+    public WeatherHour(int hour, double windSpeed, double rainFall, double temperature)
     {
         Hour = hour;
         WindSpeed = windSpeed;
         RainFall = rainFall;
+        Temperature = temperature;
     }
 
     public int Hour { get; set; }
     public double WindSpeed { get; set; }
     public double RainFall { get; set; }
+    public double Temperature { get; set; }
 }

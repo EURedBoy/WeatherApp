@@ -1,4 +1,6 @@
+using System.Collections.ObjectModel;
 using System.Text.Json;
+using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WeatherApp.Applicazione.Code.Base;
@@ -13,14 +15,16 @@ public partial class SearchViewModel : BaseViewModel
     public delegate Task UpdateEventHandler(); //😀😀😀😀
 
 
-    [ObservableProperty] public List<Locations> locationsList;
+    [ObservableProperty] public ObservableCollection<Locations> locationsList;
+    [ObservableProperty] public ObservableCollection<Locations> favoriteLocations;
 
     private string searchText;
     private readonly WeatherService service;
 
     public SearchViewModel()
     {
-        LocationsList = new List<Locations>();
+        LocationsList = new ObservableCollection<Locations>();
+        FavoriteLocations = LocationUtils.GetFavorites().ToObservableCollection();
         service = App.WeatherService;
     }
 
@@ -41,7 +45,7 @@ public partial class SearchViewModel : BaseViewModel
     private async Task TextChange()
     {
         LocationsList =
-            await service.GetLocationsFromCity(SearchText); //.DistinctBy(loc => loc.Name && loc.CountryCode).ToList();
+            (await service.GetLocationsFromCity(SearchText)).ToObservableCollection();
     }
 
     [RelayCommand]
@@ -60,13 +64,33 @@ public partial class SearchViewModel : BaseViewModel
 
         service.SelectedLocation = locations;
 
+        locations.Icon = null; //Senza questo la serilizzazione muore
         //TODO: Temporaneo
         var json = JsonSerializer.Serialize(locations);
         await File.WriteAllTextAsync(WeatherApiUtils.PreferencePath, json);
 
         await Update();
         await Application.Current.MainPage.Navigation.PopAsync();
+        IsBusy = false;
     }
+
+    [RelayCommand]
+    private async void AddFavorite(Locations locations)
+    {
+        if (locations.Favorite) FavoriteLocations.Remove(locations);
+        else
+        { 
+            if (FavoriteLocations.Contains(locations)) return; 
+            FavoriteLocations.Add(locations);
+        }
+        
+        locations.Favorite = !locations.Favorite;
+
+        OnPropertyChanged("LocationsList");
+
+        await LocationUtils.UpdateFavorite(FavoriteLocations.ToList());
+    }
+        
 
     [RelayCommand]
     private async void GeoLocation()
